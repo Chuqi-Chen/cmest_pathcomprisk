@@ -1,4 +1,4 @@
-# Path-specific mediation with competing risks
+# cmest_pathcomprisk
 
 `cmest_pathcomprisk` estimates direct, mediator, competing-event, and total
 path-specific effects for time-varying mediators and a time-to-event outcome.
@@ -32,7 +32,9 @@ fit <- cmest_pathcomprisk(
 Here `a = 0` and `astar = 1` are the function's default exposure values;
 choose values appropriate to your data. The function's default `ncores` is
 one; this example requests four. For model and data requirements, see
-`?cmest_pathcomprisk`. For a runnable example with included synthetic data:
+`?cmest_pathcomprisk`. Call `set.seed()` before fitting if you want reproducible
+results. The command returns `DE`, `IEM`, `IED`, and `TE`. For a runnable
+example with included synthetic data:
 
 ```r
 source(system.file("examples", "pathcomprisk_example.R", package = "CMAverse"))
