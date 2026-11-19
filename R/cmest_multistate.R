@@ -3,7 +3,6 @@
 #' \code{cmest_multistate} is used to implement \emph{the multistate approach} by Valeri et al. (2023) 
 #' for causal mediation analysis.
 #'
-#' @param n_workers Number of parallel workers; NULL uses the function default based on available cores.
 #' @param data a data frame (or object coercible by \link{as.data.frame} to a data frame) 
 #' containing the variables in the model. 
 #' @param outcome variable name of the outcome.
@@ -29,7 +28,7 @@
 #' 
 #' @details
 #' \strong{Assumptions of the multistate method}
-#' \describe{
+#' \itemize{
 #' \item{\emph{Consistency of potential outcomes:} }{For each i and each t, the survival in a world where we intervene, i.e., setting the time to treatment to a specific value t (via a fixed or stochastic intervention) is the same as the survival in the real world where we observe a time to treatment equal to t.}
 #' \item{\emph{There is no unmeasured mediator-outcome confounding:} }{Given \code{exposure} and 
 #' \code{basec}, \code{mediator} is independent of \code{outcome}.}
@@ -249,7 +248,6 @@ cmest_multistate <- function(data = NULL, outcome = NULL, yevent = NULL,
   })
   close(pb)
   stopCluster(cl)
-  foreach::registerDoSEQ() # Do not leave a registered backend pointing to stopped workers.
   
   # clean up the data frame
   results_summ = results %>% 

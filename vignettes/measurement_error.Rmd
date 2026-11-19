@@ -75,15 +75,12 @@ The results corrected by SIMEX:
 
 ```{r message=F,warning=F,results='hide'}
 res_simex_cont <- cmsens(object = res_naive_cont, sens = "me", MEmethod = "simex", 
-                         MEvariable = "C1_error", MEvartype = "con", MEerror = 0.05, B = 5)
+                         MEvariable = "C1_error", MEvartype = "con", MEerror = 0.05)
 ```
 
 ```{r message=F,warning=F}
 summary(res_simex_cont)
 ```
-
-For this short software demonstration, SIMEX uses `B = 5`. Use more simulations
-and check stability for substantive inference.
 
 ## A Categorical Variable Measured with Error
 
@@ -105,7 +102,7 @@ The results corrected by SIMEX:
 
 ```{r message=F,warning=F,results='hide'}
 res_simex_cat <- cmsens(object = res_naive_cat, sens = "me", MEmethod = "simex", 
-                         MEvariable = "A_error", MEvartype = "cat", MEerror = list(mc), B = 5)
+                         MEvariable = "A_error", MEvartype = "cat", MEerror = list(mc))
 
 ```
 

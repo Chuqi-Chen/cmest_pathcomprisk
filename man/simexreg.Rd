@@ -51,7 +51,6 @@ simexreg(
 \method{update}{simexreg}(object, ..., evaluate = TRUE)
 }
 \arguments{
-\item{weights}{Optional new regression weights used when updating the naive model.}
 \item{reg}{naive regression object. See \code{Details}.}
 
 \item{formula}{regression formula}

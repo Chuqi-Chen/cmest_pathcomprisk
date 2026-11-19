@@ -101,7 +101,6 @@ test_that("cmest_multistate correctly estimates RD and SD for a multicategorical
                                     nboot=1, EMint=F, 
                                     bh_method = "breslow",
                                     n_workers = 2) 
-  expect_identical(foreach::getDoParName(), "doSEQ")
   sc_data_pt_est = sc_data_result[[2]]
   print(sc_data_pt_est)
   
@@ -283,7 +282,6 @@ test_that("cmest_multistate correctly estimates RD and SD for a continuous expos
                                     nboot=1, EMint=F, 
                                     bh_method = "breslow",
                                     n_workers = 2) 
-  expect_identical(foreach::getDoParName(), "doSEQ")
   sc_data_pt_est = sc_data_result[[2]]
   #print(sc_data_pt_est)
   
@@ -461,7 +459,6 @@ test_that("cmest_multistate correctly estimates RD and SD for a binary exposure"
                          nboot=1, EMint=F, 
                          bh_method = "breslow",
                          n_workers = 2) 
-  expect_identical(foreach::getDoParName(), "doSEQ")
   sc_data_pt_est = sc_data_result[[2]]
   
   # get true values

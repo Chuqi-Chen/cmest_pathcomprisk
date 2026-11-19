@@ -48,7 +48,6 @@ cmest(
 \method{print}{summary.cmest}(x, digits = 4, ...)
 }
 \arguments{
-\item{...}{Additional arguments passed to the S3 methods.}
 \item{data}{dataset}
 
 \item{model}{causal mediation analysis approach. \code{rb}, \code{wb}, \code{iorw}, 
@@ -197,9 +196,9 @@ object or the character name of the regression.
 
 \emph{The Character Name of A Regression}
 
-\describe{
+\itemize{
 \item{\code{linear}: }{linear regression fitted by \link{glm} with \code{family = gaussian()}}
-\item{\code{logistic}: }{logistic regression fitted by \link{glm} with \code{family = binomial(link = "logit")}}
+\item{\code{logistic}: }{logistic regression fitted by \link{glm} with \code{family = logit()}}
 \item{\code{loglinear}: }{log linear regression fitted by \link{glm} with 
 \code{family = poisson()} for a binary response}
 \item{\code{poisson}: }{poisson regression fitted by \link{glm} with 
@@ -237,7 +236,7 @@ inside the \code{cmest} function.
 Let \code{Y} denote \code{outcome}, \code{A} denote \code{exposure}, \code{M=(M_1,...,M_k)^T} 
 denote \code{mediator}, \code{C} denote \code{basec}, \code{L=(L_1,...,L_s)^T} denote \code{postc}.
 
-\describe{
+\itemize{
     \item{\code{rb}: }{\emph{the regression-based approach} by Valeri et al. (2013) and
       VanderWeele et al. (2014). \code{yreg} and \code{mreg} are required. If specified as
       a user-defined regression object, \code{yreg} should regress \code{Y} on \code{A},
@@ -291,7 +290,7 @@ When there are mediatior-mediator interactions in \code{yreg}, only \code{wb}, \
 
 \strong{Estimation Methods} 
   
-\describe{
+\itemize{
 \item{\code{paramfunc}: }{closed-form parameter function estimation (only available when 
 \code{model = "rb"} and \code{length(mediator) = 1}). The point estimate of each causal 
 effect is obtained by a closed-form formula of regression coefficients. Effects conditional 
@@ -312,7 +311,7 @@ be rare.
 
 \strong{Inference Methods}
 
-\describe{
+\itemize{
 \item{\code{delta}: }{delta method (only available when \code{estimation = "paramfunc"}). 
 The standard errors of causal effects are obtained by the delta method. The confidence 
 intervals of causal effects are obtained by normal distribution approximation.}

@@ -46,13 +46,16 @@
 #' \code{FALSE}.
 #' @param args_mice a list of additional arguments passed to the \link[mice]{mice} function. See \link[mice]{mice}
 #' for details.
+#' @param x an object of class \code{cmest}.
+#' @param object an object of class \code{cmest}.
+#' @param digits minimal number of significant digits. See \link{print.default}.
 #' 
 #' 
 #' 
 #' @details
 #' 
 #' \strong{Assumptions of the regression-based approach}
-#' \describe{
+#' \itemize{
 #' \item{\emph{There is no unmeasured exposure-outcome confounding:} }{given \code{basec} and 
 #' \code{postc}, \code{exposure} is independent of \code{outcome}.}
 #' \item{\emph{There is no unmeasured mediator-outcome confounding:} }{given \code{exposure} and 
@@ -70,9 +73,9 @@
 #' object or the character name of a regression model. 
 #' 
 #' \emph{The Character Name of a Regression Model:}
-#' \describe{
+#' \itemize{
 #' \item{\code{linear}: }{linear regression fitted by \link{glm} with \code{family = gaussian()}}
-#' \item{\code{logistic}: }{logistic regression fitted by \link{glm} with \code{family = binomial(link = "logit")}}
+#' \item{\code{logistic}: }{logistic regression fitted by \link{glm} with \code{family = logit()}}
 #' \item{\code{loglinear}: }{loglinear regression fitted by \link{glm} with 
 #' \code{family = poisson()}}
 #' \item{\code{poisson}: }{poisson regression fitted by \link{glm} with 
@@ -96,22 +99,22 @@
 #' 
 #' \emph{A Fitted Regression Object:} 
 #' \itemize{
-#' \item{Regression objects can be fitted by \link{lm}, \link{glm}, \link{glm.nb}, 
+#' \item{}{Regression objects can be fitted by \link{lm}, \link{glm}, \link{glm.nb}, 
 #' \link[mgcv]{gam}, \link[nnet]{multinom}, \link[MASS]{polr}, \link[survival]{coxph} and
 #' \link[survival]{survreg}. }
-#' \item{Regression objects fitted by \link[survival]{coxph} and \link[survival]{survreg} 
+#' \item{}{Regression objects fitted by \link[survival]{coxph} and \link[survival]{survreg} 
 #' are currently not supported for \code{mreg}. }
-#' \item{\code{yreg} should regress \code{outcome} on \code{exposure},
+#' \item{}{\code{yreg} should regress \code{outcome} on \code{exposure},
 #' \code{mediator} and \code{basec}.}
-#' \item{For \code{p=1,...,k}, \code{mreg[p]} should regress \code{mediator[p]} on 
+#' \item{}{For \code{p=1,...,k}, \code{mreg[p]} should regress \code{mediator[p]} on 
 #' \code{exposure} and \code{basec}, where \code{k} is the number of mediators.}
-#' \item{\code{yreg} can't include mediator-mediator interactions when there 
+#' \item{}{\code{yreg} can't include mediator-mediator interactions when there 
 #' are multiple mediators (VanderWeele TJ & Vansteelandt, 2014).}
 #' }
 #' 
 #' 
 #' \strong{Estimation Methods} 
-#' \describe{
+#' \itemize{
 #' \item{\code{paramfunc}: }{(only available for a single 
 #' mediator) \emph{closed-form parameter function estimation} by Valeri & VanderWeele (2013).
 #' Each causal effect is estimated by a closed-form formula of regression coefficients. }
@@ -130,7 +133,7 @@
 #' 
 #' 
 #' \strong{Inference Methods}
-#' \describe{
+#' \itemize{
 #' \item{\code{delta}: }{(only available when \code{estimation = "paramfunc"}) inferences 
 #' about causal effects are obtained by the delta method. }
 #' \item{\code{bootstrap}: }{inferences about causal effects are obtained by bootstrapping. }
@@ -146,7 +149,7 @@
 #' by \link[survival]{survreg}, etc.
 #' 
 #' When \code{EMint} is \code{FALSE}, \emph{two-way decomposition} (Valeri & VanderWeele, 2013) is conducted, i.e.,
-#' \describe{
+#' \itemize{
 #' \item{for a continuous outcome: }{\code{cde} (controlled direct effect), \code{pnde} (pure natural 
 #' direct effect), \code{tnde} (total natural direct effect), \code{pnie} (pure natural indirect 
 #' effect), \code{tnie} (total natural indirect effect), \code{te} (total effect), and 
@@ -157,7 +160,7 @@
 #' }
 #' 
 #' When \code{EMint} is \code{TRUE}: additional \emph{four-way decomposition} (VanderWeele, 2014) is conducted, i.e., 
-#' \describe{
+#' \itemize{
 #' \item{for a continuous outcome: }{ \code{intref} 
 #' (reference interaction), \code{intmed} (mediated interaction), 
 #' \code{cde(prop)} (proportion \code{cde}), \code{intref(prop)} (proportion 
@@ -197,7 +200,7 @@
 #' \item{effect.pval}{p-values of causal effects,}
 #' ...
 #'
-#' @seealso \link{cmest},
+#' @seealso \link{cmest_gformula}, \link{cmest_wb}, \link{cmest_iorw}, \link{cmest_msm}, 
 #' \link{cmest_multistate}, \link{ggcmest}, \link{cmdag}, \link{cmsens}.
 #'
 #' @references

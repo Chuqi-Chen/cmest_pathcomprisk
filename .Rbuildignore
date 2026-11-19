@@ -9,4 +9,4 @@
 README.Rmd
 ^codecov\.yml$
 ^validation$
-^vignettes/[^/]*_cache($|/)
+^CMEST_PATHCOMPRISK[.]md$

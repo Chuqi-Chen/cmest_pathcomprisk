@@ -1,0 +1,17 @@
+Scope clarified on 19 November 2026
+
+Inherited CMAverse R functions, Rd pages, README files and workflows are restored
+byte for byte to the fork baseline b2ce0598ed362ddfa0db8fff5486ee43d3e73f54.
+The only changes to inherited package metadata are the additive dependencies,
+exports and exclusion of this command's validation records required for the
+new command contribution. The package remains named CMAverse.
+
+The cmest_pathcomprisk estimator and separate validation source remain unchanged.
+The Windows bash fix is retained solely in the new command's own workflow.
+Command instructions are in CMEST_PATHCOMPRISK.md, keeping the upstream README
+unchanged. Broad inherited-package warnings are outside this contribution's scope.
+
+Verification after restoration: full fork installation succeeded; only the
+pathcomprisk interface, parallel and professor-reference tests were executed.
+All 58 command assertions passed. No inherited tests were changed or rerun
+as part of this scoped verification.
