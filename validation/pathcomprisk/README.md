@@ -24,8 +24,7 @@ used in the research project. It was prepared as a 3,000-person example with
 mediators missing outside the event-free risk sets and interval-specific
 incident competing-event indicators. Its creator script is recorded in
 the contribution repository example preparation script. It contains no real study participants. It is a
-usage example and does not establish performance under a correctly specified
-causal model.
+usage example.
 
 The paper is Domingo-Relloso A, Zhang Y, Wang Z, et al. (2026),
 "A Path-Specific Effect Approach to Mediation Analysis With Time-Varying
@@ -50,13 +49,8 @@ seed across arbitrary sequential and parallel implementations does not align
 all random draws. Short tests use a few bootstrap samples to check algorithms;
 this is not a choice of bootstrap count for inference.
 
-## Limits
+## Reference convention
 
-The three- and five-timepoint simulation summaries are not automated truth
-oracles: versions of the truth scripts use different outcome coefficients and
-counterfactual continuation rules. Agreement of means across two sets of
-simulations cannot prove unbiasedness. A valid bias/coverage study must first
-align the data-generating process and target estimand with the truth definition.
 The one-timepoint survival behavior (the reference skips its first death draw)
 is deliberately retained as a source convention.
 

@@ -50,8 +50,8 @@ yreg <- aalen(
 )
 
 # ---- estimate ----
-# 20 replicates make a short walkthrough, not a stable final inference.
-# For a full analysis, begin with nboot = 1000 and assess stability.
+# Use 20 bootstrap replicates for this quick example.
+# For an analysis, choose the bootstrap count appropriate to the study.
 # set.seed() is optional and belongs in the analysis, not in the command.
 set.seed(2026)
 fit <- cmest_pathcomprisk(
