@@ -3,6 +3,7 @@
 #' \code{simexreg} is used to correct a regression object with a variable measured with 
 #' error via \emph{SIMEX} by Cook et al. (1994) and Küchenhoff et al. (2006).
 #'
+#' @param weights Optional new regression weights used when updating the naive model.
 #' @param reg naive regression object. See \code{Details}.
 #' @param formula regression formula
 #' @param data new dataset for \code{reg}

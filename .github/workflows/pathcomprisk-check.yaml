@@ -23,6 +23,7 @@ jobs:
           dependencies: '"hard"'
           extra-packages: any::testthat
       - name: Install this fork as CMAverse
+        shell: bash
         run: R CMD INSTALL .
       - name: Verify the installed command and reference tests
         shell: Rscript {0}

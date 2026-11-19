@@ -96,11 +96,8 @@ indicates the case is rare.}
 \item{args_mice}{a list of additional arguments passed to the \link[mice]{mice} function. See \link[mice]{mice}
 for details.}
 
-\item{x}{an object of class \code{cmest}.}
 
-\item{object}{an object of class \code{cmest}.}
 
-\item{digits}{minimal number of significant digits. See \link{print.default}.}
 }
 \value{
 An object of classes \code{cmest} and \code{cmest_rb} is returned:
@@ -130,7 +127,7 @@ with a single exposure, a single outcome, and a single or multiple mediators.
 }
 \details{
 \strong{Assumptions of the regression-based approach}
-\itemize{
+\describe{
 \item{\emph{There is no unmeasured exposure-outcome confounding:} }{given \code{basec} and 
 \code{postc}, \code{exposure} is independent of \code{outcome}.}
 \item{\emph{There is no unmeasured mediator-outcome confounding:} }{given \code{exposure} and 
@@ -148,9 +145,9 @@ Each regression model in \code{yreg} and \code{mreg} can be specified by a fitte
 object or the character name of a regression model. 
 
 \emph{The Character Name of a Regression Model:}
-\itemize{
+\describe{
 \item{\code{linear}: }{linear regression fitted by \link{glm} with \code{family = gaussian()}}
-\item{\code{logistic}: }{logistic regression fitted by \link{glm} with \code{family = logit()}}
+\item{\code{logistic}: }{logistic regression fitted by \link{glm} with \code{family = binomial(link = "logit")}}
 \item{\code{loglinear}: }{loglinear regression fitted by \link{glm} with 
 \code{family = poisson()}}
 \item{\code{poisson}: }{poisson regression fitted by \link{glm} with 
@@ -174,22 +171,22 @@ model, \code{yreg} is fitted with the interaction between the exposure and each 
 
 \emph{A Fitted Regression Object:} 
 \itemize{
-\item{}{Regression objects can be fitted by \link{lm}, \link{glm}, \link{glm.nb}, 
+\item{Regression objects can be fitted by \link{lm}, \link{glm}, \link{glm.nb}, 
 \link[mgcv]{gam}, \link[nnet]{multinom}, \link[MASS]{polr}, \link[survival]{coxph} and
 \link[survival]{survreg}. }
-\item{}{Regression objects fitted by \link[survival]{coxph} and \link[survival]{survreg} 
+\item{Regression objects fitted by \link[survival]{coxph} and \link[survival]{survreg} 
 are currently not supported for \code{mreg}. }
-\item{}{\code{yreg} should regress \code{outcome} on \code{exposure},
+\item{\code{yreg} should regress \code{outcome} on \code{exposure},
 \code{mediator} and \code{basec}.}
-\item{}{For \code{p=1,...,k}, \code{mreg[p]} should regress \code{mediator[p]} on 
+\item{For \code{p=1,...,k}, \code{mreg[p]} should regress \code{mediator[p]} on 
 \code{exposure} and \code{basec}, where \code{k} is the number of mediators.}
-\item{}{\code{yreg} can't include mediator-mediator interactions when there 
+\item{\code{yreg} can't include mediator-mediator interactions when there 
 are multiple mediators (VanderWeele TJ & Vansteelandt, 2014).}
 }
 
 
 \strong{Estimation Methods} 
-\itemize{
+\describe{
 \item{\code{paramfunc}: }{(only available for a single 
 mediator) \emph{closed-form parameter function estimation} by Valeri & VanderWeele (2013).
 Each causal effect is estimated by a closed-form formula of regression coefficients. }
@@ -208,7 +205,7 @@ be rare.
 
 
 \strong{Inference Methods}
-\itemize{
+\describe{
 \item{\code{delta}: }{(only available when \code{estimation = "paramfunc"}) inferences 
 about causal effects are obtained by the delta method. }
 \item{\code{bootstrap}: }{inferences about causal effects are obtained by bootstrapping. }
@@ -224,7 +221,7 @@ hazard ratio for a survival outcome fitted by \link[survival]{coxph}, mean survi
 by \link[survival]{survreg}, etc.
 
 When \code{EMint} is \code{FALSE}, \emph{two-way decomposition} (Valeri & VanderWeele, 2013) is conducted, i.e.,
-\itemize{
+\describe{
 \item{for a continuous outcome: }{\code{cde} (controlled direct effect), \code{pnde} (pure natural 
 direct effect), \code{tnde} (total natural direct effect), \code{pnie} (pure natural indirect 
 effect), \code{tnie} (total natural indirect effect), \code{te} (total effect), and 
@@ -235,7 +232,7 @@ effect), \code{tnie} (total natural indirect effect), \code{te} (total effect), 
 }
 
 When \code{EMint} is \code{TRUE}: additional \emph{four-way decomposition} (VanderWeele, 2014) is conducted, i.e., 
-\itemize{
+\describe{
 \item{for a continuous outcome: }{ \code{intref} 
 (reference interaction), \code{intmed} (mediated interaction), 
 \code{cde(prop)} (proportion \code{cde}), \code{intref(prop)} (proportion 
@@ -316,6 +313,6 @@ Efron B (1987). Better Bootstrap Confidence Intervals. Journal of the American S
 Association. 82(397): 171-185.
 }
 \seealso{
-\link{cmest_gformula}, \link{cmest_wb}, \link{cmest_iorw}, \link{cmest_msm}, 
+\link{cmest},
 \link{cmest_multistate}, \link{ggcmest}, \link{cmdag}, \link{cmsens}.
 }

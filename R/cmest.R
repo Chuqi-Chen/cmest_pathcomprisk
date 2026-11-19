@@ -7,6 +7,7 @@
 #' \emph{the natural effect model} by Vansteelandt et al. (2012), \emph{the marginal structural 
 #' model} by VanderWeele et al. (2017), and \emph{the g-formula approach} by Robins (1986).
 #'
+#' @param ... Additional arguments passed to the S3 methods.
 #' @param data dataset
 #' @param model causal mediation analysis approach. \code{rb}, \code{wb}, \code{iorw}, 
 #' \code{ne}, \code{msm} and \code{gformula} are implemented. Default is \code{rb}. 
@@ -93,9 +94,9 @@
 #' 
 #' \emph{The Character Name of A Regression}
 #' 
-#' \itemize{
+#' \describe{
 #' \item{\code{linear}: }{linear regression fitted by \link{glm} with \code{family = gaussian()}}
-#' \item{\code{logistic}: }{logistic regression fitted by \link{glm} with \code{family = logit()}}
+#' \item{\code{logistic}: }{logistic regression fitted by \link{glm} with \code{family = binomial(link = "logit")}}
 #' \item{\code{loglinear}: }{log linear regression fitted by \link{glm} with 
 #' \code{family = poisson()} for a binary response}
 #' \item{\code{poisson}: }{poisson regression fitted by \link{glm} with 
@@ -133,7 +134,7 @@
 #' Let \code{Y} denote \code{outcome}, \code{A} denote \code{exposure}, \code{M=(M_1,...,M_k)^T} 
 #' denote \code{mediator}, \code{C} denote \code{basec}, \code{L=(L_1,...,L_s)^T} denote \code{postc}.
 #' 
-#' \itemize{
+#' \describe{
 #'     \item{\code{rb}: }{\emph{the regression-based approach} by Valeri et al. (2013) and
 #'       VanderWeele et al. (2014). \code{yreg} and \code{mreg} are required. If specified as
 #'       a user-defined regression object, \code{yreg} should regress \code{Y} on \code{A},
@@ -187,7 +188,7 @@
 #' 
 #' \strong{Estimation Methods} 
 #'   
-#' \itemize{
+#' \describe{
 #' \item{\code{paramfunc}: }{closed-form parameter function estimation (only available when 
 #' \code{model = "rb"} and \code{length(mediator) = 1}). The point estimate of each causal 
 #' effect is obtained by a closed-form formula of regression coefficients. Effects conditional 
@@ -208,7 +209,7 @@
 #' 
 #' \strong{Inference Methods}
 #' 
-#' \itemize{
+#' \describe{
 #' \item{\code{delta}: }{delta method (only available when \code{estimation = "paramfunc"}). 
 #' The standard errors of causal effects are obtained by the delta method. The confidence 
 #' intervals of causal effects are obtained by normal distribution approximation.}

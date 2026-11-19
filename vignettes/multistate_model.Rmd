@@ -12,7 +12,7 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(cache=TRUE)
+knitr::opts_chunk$set(cache=FALSE)
 knitr::opts_chunk$set(fig.width=6, fig.height=4)
 library(dplyr)
 library(survminer)
@@ -34,6 +34,10 @@ of RD and SD is of interest. For this purpose, we simulate a dataset
 with a binary exposure A, a time-to-event mediator M, a timeto-event
 outcome S, and two baseline covariates: one continuous (C1), and one
 binary (C2).
+
+This software walkthrough uses 300 simulated subjects and two bootstrap
+replicates to keep document builds short. These settings demonstrate the
+interface; increase the sample size and bootstrap count for substantive inference.
 
 ## Data simulation
 
@@ -79,7 +83,7 @@ gen_srv <- function(n, lambda, beta, X){
   return(time)
 }
 
-n <- 2000 
+n <- 300 
 A = sample(c(0,1),replace=TRUE, size=n, c(0.5,0.5)) #binary exposure
 C1 = sample(c(0,1),replace=TRUE, size=n,c(0.6, 0.4)) #binary baseline covariate
 C2 = rnorm(n, mean = 1, sd = 1) #continuous baseline covariate
@@ -199,7 +203,7 @@ sc_data_result = cmest_multistate(data = sc_data,
                                   basecval = c("C1" = "1", 
                                                "C2" = as.character(mean(sc_data$C2))),
                                   astar="0", a="1", 
-                                  nboot=10, EMint=F, 
+                                  nboot=2, EMint=F, n_workers=2, 
                                   bh_method = "breslow")   
 
 ```
