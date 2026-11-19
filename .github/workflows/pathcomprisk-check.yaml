@@ -1,0 +1,38 @@
+name: Path-specific mediation command
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  installed-command:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    env:
+      NOT_CRAN: "true"
+      R_KEEP_PKG_SOURCE: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          dependencies: '"hard"'
+          extra-packages: any::testthat
+      - name: Install this fork as CMAverse
+        run: R CMD INSTALL .
+      - name: Verify the installed command and reference tests
+        shell: Rscript {0}
+        run: |
+          library(CMAverse)
+          stopifnot("cmest_pathcomprisk" %in% getNamespaceExports("CMAverse"))
+          testthat::test_dir("tests/testthat", filter = "pathcomprisk",
+                             reporter = "summary", stop_on_failure = TRUE)
+      - name: Run the installed synthetic example with four workers
+        shell: Rscript {0}
+        run: |
+          library(CMAverse)
+          source(system.file("examples", "pathcomprisk_example.R", package = "CMAverse"))

@@ -1,0 +1,35 @@
+Local validation: 19 November 2026
+R 4.5.1 on macOS Sonoma 14.8.9 (Apple Silicon)
+
+R CMD build / R CMD check --no-manual --no-vignettes:
+  0 errors, 0 warnings, 0 notes (Status: OK)
+  testthat: FAIL 0, WARN 0, SKIP 0, PASS 58
+  Checked via tools/check.R in an ephemeral installed package namespace.
+
+Reference comparison:
+  Hazard and survival, 1-5 mediator timepoints, two bootstrap draws per case.
+  Raw effects agree to the tested 1e-9 tolerance; random-number states match.
+  No competing-event process: 1, 3, 5 timepoints on both scales.
+  NM=1 hazard uses the documented reference column-name adapter.
+
+Parallel check:
+  Repeat calls with two PSOCK workers reproduce the raw draws and output.
+  Caller-owned backend is retained; an owned backend is stopped on return.
+
+Full example:
+  3000 synthetic subjects; 3 mediator timepoints; 20 bootstrap draws; 4 workers.
+  Both hazard and survival calls completed. Output in example-output.txt.
+
+Integration script:
+  Tested on a CMAverse-shaped metadata fixture, including repeat application.
+  Package name, authors, maintainer, version and license are preserved.
+  Not a check of the full upstream CMAverse package or its complete test suite.
+
+The two scientific R files match the research originals byte for byte.
+GitHub Actions checks on Linux/macOS/Windows have been configured, not run here.
+doParallel 1.0.17 
+foreach 1.5.2 
+mvtnorm 1.3.3 
+survival 3.8.3 
+timereg 2.0.7 
+testthat 3.2.3 

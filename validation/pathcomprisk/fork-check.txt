@@ -1,0 +1,25 @@
+CMAverse fork integration verification, 19 November 2026
+Repository: Chuqi-Chen/cmest_pathcomprisk
+Base: b2ce0598ed362ddfa0db8fff5486ee43d3e73f54
+R: 4.5.1, macOS Sonoma 14.8.9, Apple Silicon
+
+The complete CMAverse fork was installed in an isolated local library with all
+its Imports dependencies available. The package remains named CMAverse.
+
+Passed:
+- R CMD INSTALL of the full fork, including namespace load checks.
+- library(CMAverse) makes cmest_pathcomprisk directly available.
+- Installed help page is present.
+- All 58 command regression assertions: interface, invalid-input rejection,
+  professor-function comparisons for 1-5 timepoints on both scales, cases
+  without competing events, and PSOCK reproducibility/backend ownership.
+- Installed synthetic example: 3000 subjects, 20 bootstrap draws, 4 workers.
+- Installed survival-probability call: 3000 subjects, 2 bootstrap draws, 4 workers.
+- Both scientific R files match the provided research originals byte for byte.
+
+The inherited package-wide test suite and full R CMD check of CMAverse were not
+rerun locally. The earlier zero-error package check in 00check.log concerns the
+isolated command harness only; it is not a claim about all upstream CMAverse
+functions. Original CMAverse code, author information and license are retained.
+The new GitHub workflow installs the full package and tests the new command
+on Linux, macOS and Windows. Remote job results are reported by GitHub Actions.

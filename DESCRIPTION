@@ -52,7 +52,13 @@ Imports:
     medflex,
     mstate,
     predint,
-    survminer
+    survminer,
+    doParallel,
+    mvtnorm,
+    parallel,
+    stats,
+    timereg,
+    utils
 RoxygenNote: 7.3.1
 Suggests: 
     knitr,
@@ -60,7 +66,7 @@ Suggests:
     kableExtra,
     dagitty,
     rmarkdown,
-    testthat,
+    testthat (>= 3.0.0),
     covr
 VignetteBuilder: knitr
 Depends: R (>= 2.10)
